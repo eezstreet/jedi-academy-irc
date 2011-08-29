@@ -1,0 +1,65 @@
+JEDI ACADEMY IRC
+by eezstreet
+v1.000
+
+PLEASE READ THIS! IT WILL ANSWER A LOT OF YOUR QUESTIONS!
+
+----------------
+INTRODUCTION
+----------------
+
+IRC is one of the oldest protocols in existence.
+JA is one of the older games out there.
+
+Combine.
+Profit?
+
+
+The result is this, Jedi Academy IRC. 
+For most players, this handy tool may unfortunately cause the downfall of the game ("it's a chatroom not a game, hurr"). I realize that. But the implications of this far reach the general masses. I wrote this in my spare time, with hope that this would make things easier for Jedi Knight Galaxies. But also, it could be used as a general global chat for all players.
+
+By default, it is set up to connect to the irc.arloria.net server. I am on good terms with the server admin (Sheep), so if you see him, tell him I said Hi (:D)
+
+-----------------
+FEATURES
+-----------------
+
+- Chat with any player, on any server, regardless if playing in Jedi Academy or not.
+- Built into the game, no alt-tabbing, no shift-tabbing, no scroll-lock-x-ing. All handled through the console.
+- Lightweight, zero impact on FPS
+- Works with most serverside mods (Lugormod, JA+ (if you don't have the plugin), OJP (if you don't have the plugin), Makermod, and of course, baseJA)
+- Open Source. Implement into your own code project.
+
+
+-----------------
+COMMAND LISTING/HOW-TO
+-----------------
+
+- ircact: set active talking channel. By default, it is #JA-Global.
+- ircsay: chat in currently active talking channel. Syntax: /ircsay "Hello, how is it going?"
+- ircquit: leave IRC altogether.
+- ircjoin: Join a channel. Syntax: /ircjoin #Channel. For passworded channels: /ircjoin "#blah blarg"
+- ircleave: Leave a specified channel. Syntax: /ircleave #Channel
+- ircconnect: Connect to IRC, after quitting, or disconnecting
+- me: Perform a "role-playing" action. Syntax: /me "pats you on the back for reading the readme"
+- ircstats: only for network administrators I think
+- irclist: lists everyone in a channel. Syntax: /irclist #JA-Global. If no argument is given, lists everyone in every channel on the network.
+- ircname: change your nickname (YOU MUST do this, this is a rule. No Padawan nicknames are allowed in #JA-Global.
+
+
+-----------------
+LEGAL
+-----------------
+
+You are allowed to use the source code of this project with your own. All I ask is that credit is given where it is due if you decide to release your project to the masses.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software withoutrestriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+This software is not affiliated with Lucasarts LTD, Activision, or Raven Software. All software contained herein was assembled using the Software Development Kit given with the game. Therefore, the EULA was not broken.
+
+
+problems? concerns? feature requests? eezstreet@live.com is all you need.
