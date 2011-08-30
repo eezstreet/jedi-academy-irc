@@ -127,7 +127,7 @@ void PerformActionForIRCEvent(char *buffer, SOCKET socket)
 	ParseIRCString(buffer, host, command);
 
 	if(atoi(command)) { //Status message, don't even bother picking them out.
-		StatusReceiveCMD(buffer, param, message);
+		StatusReceiveCMD(buffer, param, message, atoi(command));
 	} else if(!Q_stricmp(command, "NOTICE")) {
 		NoticeCMD(buffer, param, message);
 	} else if(!Q_stricmp(host, "PING")) {

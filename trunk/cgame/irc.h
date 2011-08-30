@@ -22,7 +22,7 @@
 #include "irc_connection.h"
 #include "q_shared.h"
 
-#define EEZ_NUM_QUEUES	4
+#define EEZ_NUM_QUEUES	64
 #define EEZ_QUEUE_SIZE	512
 #define MAX_CONTINUOUS_MESSAGES	10
 
