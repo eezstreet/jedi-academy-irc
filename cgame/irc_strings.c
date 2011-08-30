@@ -51,11 +51,7 @@ void ParseIRCString(char *buffer, char *host, char *command)
 	while(1)
 	{
 		if(buffer[0] == '\0')
-		{
-			command[0] = 0;
-			host[0] = 0;
-			return;
-		}
+			break;
 		if(buffer[0] == ' ')
 			break;
 		if(buffer[0] == ':' && j == 0)

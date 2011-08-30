@@ -27,7 +27,7 @@
 
 void NoticeCMD(char *fullString, char *param, char *message);
 void PrivateMessageCMD(SOCKET socket, char *fullString, char *host, char *param, char *message);
-void StatusReceiveCMD(char *fullString, char *param, char *message);
+void StatusReceiveCMD(char *fullString, char *param, char *message, int number);
 void QuitCMD(char *fullString, char *host, char *message);
 void PartCMD(char *fullString, char *host, char *message);
 void ModeCMD(char *fullString, char *host, char *message);

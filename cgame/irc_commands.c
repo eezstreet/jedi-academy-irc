@@ -61,12 +61,12 @@ void PrivateMessageCMD(SOCKET socket, char *fullString, char *host, char *param,
 	Com_TPrintf(va("^4<^7%s^4> ^3<^7%s^3> ^7%s\n", nick, param, message));
 }
 
-void StatusReceiveCMD(char *fullString, char *param, char *message)
+void StatusReceiveCMD(char *fullString, char *param, char *message, int number)
 {
 	GrabParam(fullString, param); //Param is ignored anyway??
 	GrabMessage(fullString, message, qtrue);
 
-	Com_TPrintf(va("%s\n", message));
+	Com_TPrintf(va("%s (%i)\n", message, number));
 }
 
 void QuitCMD(char *fullString, char *host, char *message)
