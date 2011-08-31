@@ -220,7 +220,6 @@ void HandleNextCommand(char *buffer, SOCKET socket)
 				if(!ReceiveMoreStuff(buffer, socket))
 					return;
 			}
-			ClipNumberChars(buffer, 2, qtrue);
 			PerformActionForIRCEvent(buffer, socket);
 		}
 		else if(buffer[0] == '\0')

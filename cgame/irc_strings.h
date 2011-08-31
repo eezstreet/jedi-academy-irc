@@ -31,4 +31,5 @@ void CleanString(char *string, char *cleanstring);
 void StopAtSpace(char *string, char *buffer);
 void GrabParam(char *buffer, char *param);
 void GrabMessage(char *buffer, char *param, qboolean colons);
+int ReceiveMoreStuff(char *buffer, SOCKET socket);
 void HandleNextCommand(char *buffer, SOCKET socket);

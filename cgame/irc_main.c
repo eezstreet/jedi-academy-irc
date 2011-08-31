@@ -113,18 +113,21 @@ int WINAPI LaunchBot(void *dummy)
 void PerformActionForIRCEvent(char *buffer, SOCKET socket)
 {
 	int j;
-	char host[1024];
-	char command[1024];
-	char param[1024];
-	char message[1024];
-	char strippedNick[32];
+	char line[1024];
+	IrcCommand_t command;
 
 	j = 0;
 	if(!buffer)
 	{
 		return;
 	}
-	ParseIRCString(buffer, host, command);
+	if(!GrabParsingLine(buffer, line, socket))
+		return;
+	else
+	{
+		if(ParseIRCMessage(line, &command))
+			return;
+	}
 
 	if(atoi(command)) { //Status message, don't even bother picking them out.
 		StatusReceiveCMD(buffer, param, message, atoi(command));

@@ -443,6 +443,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\irc_parser.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\irc_strings.c"
 					>
 				</File>
