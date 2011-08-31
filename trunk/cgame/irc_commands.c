@@ -26,87 +26,57 @@
 //==========================================================
 
 
-void NoticeCMD(char *fullString, char *param, char *message)
+void NoticeCMD(IrcCommand_t *cmd)
 {
-	GrabParam(fullString, param);
-	GrabMessage(fullString, message, qfalse);
 
-	if(!Q_stricmp(param, "AUTH"))
+	if(!Q_stricmp(cmd->argv[0], "AUTH"))
 	{
-		Com_TPrintf(va("^2%s\n", message));
+		Com_TPrintf(va("^2%s\n", cmd->argv[1]));
 	}
 }
 
-void PrivateMessageCMD(SOCKET socket, char *fullString, char *host, char *param, char *message)
+void PrivateMessageCMD(SOCKET socket, IrcCommand_t *cmd)
 {
-	char nick[20];
-	char rest[1024];
-	GrabParam(fullString, param);
-	GrabMessage(fullString, message, qfalse);
-	StripNick(host, nick);
 
-	if(_strnicmp(message, "\001PING", 5) == 0)
+	if(_strnicmp(cmd->argv[1], "\001PING", 5) == 0)
 	{
-		strncpy(rest, message+5, 1020);
-		send(socket, va("NOTICE %s :\001PING %s\r\n", nick, rest), strlen(va("NOTICE %s :\001PING %s\r\n", nick, rest)), 0);
-		Com_TPrintf(va("^2*** CTCP PING from %s\n", nick));
+		send(socket, va("NOTICE %s :\001PING %s\r\n", cmd->nick, cmd->argv[1]+7), strlen(va("NOTICE %s :\001PING %s\r\n", cmd->nick, cmd->argv[1]+7)), 0);
+		Com_TPrintf(va("^2*** CTCP PING from %s\n", cmd->nick));
 		return;
-	} else if(_strnicmp(message, "\001ACTION", 7) == 0)
+	} else if(_strnicmp(cmd->argv[1], "\001ACTION", 7) == 0)
 	{
-		strncpy(rest, message+7, sizeof(rest)-7);
-		Com_TPrintf(va("^3<^7%s^3>^5 ** ^4%s %s ^5**\n", param, nick, message+5));
+		Com_TPrintf(va("^3<^7%s^3>^5 ** ^4%s %s ^5**\n", cmd->argv[0], cmd->nick, cmd->argv[1]+7));
 		return;
 	}
 
-	Com_TPrintf(va("^4<^7%s^4> ^3<^7%s^3> ^7%s\n", nick, param, message));
+	Com_TPrintf(va("^4<^7%s^4> ^3<^7%s^3> ^7%s\n", cmd->nick, cmd->argv[0], cmd->argv[1]));
 }
 
-void StatusReceiveCMD(char *fullString, char *param, char *message, int number)
+void StatusReceiveCMD(IrcCommand_t *cmd)
 {
-	GrabParam(fullString, param); //Param is ignored anyway??
-	GrabMessage(fullString, message, qtrue);
-
-	Com_TPrintf(va("%s (%i)\n", message, number));
+	Com_TPrintf(va("%s (%i)\n", cmd->argv[0], cmd->cmdNum));
 }
 
-void QuitCMD(char *fullString, char *host, char *message)
+void QuitCMD(IrcCommand_t *cmd)
 {
-	char NickString[32];
-	GrabMessage(fullString, message, qtrue);
-	StripNick(NickString, host);
 
-	Com_TPrintf(va("^3%s has left ArloriaNet (%s)\n", NickString, message));
+	Com_TPrintf(va("^3%s has left ArloriaNet (%s)\n", cmd->nick, cmd->argv[0]));
 }
 
-void PartCMD(char *fullString, char *host, char *message)
+void PartCMD(IrcCommand_t *cmd)
 {
-	char NickString[32];
-	GrabMessage(fullString, message, qtrue);
-	StripNick(NickString, host);
-
-	Com_TPrintf(va("^5%s has left %s\n", NickString, message));
+	Com_TPrintf(va("^5%s has left %s\n", cmd->nick, cmd->argv[0]));
 }
 
-void ModeCMD(char *fullString, char *host, char *message)
+void ModeCMD(IrcCommand_t *cmd)
 {
-	char NickString[32];
-	GrabMessage(fullString, message, qtrue);
-	StripNick(NickString, host);
-
-	Com_TPrintf(va("^2%s set mode %s\n", NickString, message));
+	Com_TPrintf(va("^2%s set mode %s\n", cmd->nick, cmd->argv[0]));
 }
 
-void KickCMD(char *fullString, char *host, char *param, char *message)
+void KickCMD(IrcCommand_t *cmd)
 {
-	char NickString[32];
-	char NickString2[32];
-	GrabParam(fullString, param);
-	GrabMessage(fullString, message, qfalse);
 
-	StripNick(host, NickString);
-	StripNick(host, NickString2);
-
-	Com_TPrintf(va("^6%s KICKED %s from %s\n", NickString, NickString2, message));
+	Com_TPrintf(va("^6%s KICKED %s from %s\n", cmd->nick, cmd->argv[1], cmd->argv[0]));
 }
 
 //=======================================================================

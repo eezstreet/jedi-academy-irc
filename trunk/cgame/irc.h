@@ -62,4 +62,38 @@ char Nickname[32];
 #define Com_TPrintf(x)	AddCommandToQueue("Com_Printf", x)
 #define BOT_BUFSIZE		5096
 
-#define JAIRC_VERSION "Alpha 1"
+#define JAIRC_VERSION "Alpha 1.001"
+
+typedef struct
+{
+	// Internal data
+	char data[512];			// use command and argv to access
+
+	// Prefix
+	int hasPrefix;			// 1 if prefix data is available
+	int isClient;			// 1 if the data is from a client (user and nick are set), server host otherwise
+	char user[16];			// username of the client (only if isClient == 1)
+	char nick[64];			// nickname of the client (only if isClient == 1)
+	char host[256];			// hostname of the client/server (depending on isClient)
+	
+	// Command information
+	int cmdNum;				// If zero, assume text command
+	const char *command;	// IRC command
+	
+	// Arguments
+	unsigned int argc;		// Argument count (0-15)
+	const char *argv[15];	// Arguments
+} IrcCommand_t;
+
+enum IrcParseErrorCodes
+{
+	ERR_OK = 0,
+	ERR_BADLEN,
+	ERR_BADARGS,
+	ERR_NULLMESSAGE,
+	ERR_INVALIDMESSAGE,
+};
+
+
+int ParseIRCMessage(const char *message, IrcCommand_t *cmd);
+qboolean GrabParsingLine(char *line, char *buffer, SOCKET socket);

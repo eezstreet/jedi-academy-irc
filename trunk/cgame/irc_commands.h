@@ -25,13 +25,13 @@
 #include "irc_connection.h"
 #include "irc_strings.h"
 
-void NoticeCMD(char *fullString, char *param, char *message);
-void PrivateMessageCMD(SOCKET socket, char *fullString, char *host, char *param, char *message);
-void StatusReceiveCMD(char *fullString, char *param, char *message, int number);
-void QuitCMD(char *fullString, char *host, char *message);
-void PartCMD(char *fullString, char *host, char *message);
-void ModeCMD(char *fullString, char *host, char *message);
-void KickCMD(char *fullString, char *host, char *param, char *message);
+void NoticeCMD(IrcCommand_t *cmd);
+void PrivateMessageCMD(SOCKET socket, IrcCommand_t *cmd);
+void StatusReceiveCMD(IrcCommand_t *cmd);
+void QuitCMD(IrcCommand_t *cmd);
+void PartCMD(IrcCommand_t *cmd);
+void ModeCMD(IrcCommand_t *cmd);
+void KickCMD(IrcCommand_t *cmd);
 
 int WINAPI LaunchBotCommandHandler(SOCKET *socket);
 void ExecuteCommandInIRCQueue(int number, SOCKET socket);
