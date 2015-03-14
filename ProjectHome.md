@@ -1,0 +1,1 @@
+This provides an IRC Client for Jedi Academy. I know some people wanted this, and it would be invaluable to have in code projects.
